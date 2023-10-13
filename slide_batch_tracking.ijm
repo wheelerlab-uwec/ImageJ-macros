@@ -30,7 +30,7 @@ function crop_track(input, output, filename) {
 	selectWindow("Result of " + filename);
 	run("Auto Threshold", "method=MaxEntropy white show stack use_stack_histogram");
 	run("Make Binary", "method=Default background=Dark");
-	run("MTrack2 ", "minimum=90 maximum=750 maximum_=25 minimum_=20 save display show show_0 show_1 save=" + output + basename + "_track.txt");
+	run("MTrack2 ", "minimum=45 maximum=750 maximum_=25 minimum_=20 save display show show_0 show_1 save=" + output + basename + "_track.txt");
 	selectWindow("Paths");
 	save(output + basename + "_paths.jpg");
 	close("*");
