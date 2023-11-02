@@ -25,9 +25,9 @@ function crop_track(input, output, filename) {
 	run("Crop");
 	setBackgroundColor(0, 0, 0);
 	run("Clear Outside", "stack");
-	run("Z Project...", "projection=[Max Intensity]");
-	imageCalculator("Difference create stack", filename,"MAX_" + filename);
-	selectWindow("Result of " + filename);
+	run("Z Project...", "projection=Median");
+	imageCalculator("Difference create stack", filename,"MED_" + filename);
+	selectImage("Result of " + filename);
 	run("Auto Threshold", "method=MaxEntropy white show stack use_stack_histogram");
 	run("Make Binary", "method=Default background=Dark");
 	run("MTrack2 ", "minimum=45 maximum=750 maximum_=25 minimum_=20 save display show show_0 show_1 save=" + output + basename + "_track.txt");
